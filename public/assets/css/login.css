@@ -1,0 +1,86 @@
+/* Root Variables */
+:root {
+    --primary-color: #00b4d8;
+    --secondary-color: #ff9f1c;
+    --accent-color: #ff70a6;
+    --text-color: #2d3436;
+    --light-bg: #f0f8ff;
+    --dark-bg: #34495e;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, var(--light-bg), #e9ecef);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Login Form Container */
+.login-form-container {
+    border: 2px solid var(--primary-color);
+    border-radius: 15px;
+    background: linear-gradient(135deg, #fff, var(--light-bg));
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.login-form-container:hover {
+    border-color: var(--secondary-color);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.login-form-container h2 {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Form Controls */
+.form-control {
+    border-radius: 12px;
+    border: 1px solid var(--primary-color);
+    background-color: #f8f9fa;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 5px rgba(255, 159, 28, 0.5);
+}
+
+/* Checkbox */
+.form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Button */
+.btn-primary {
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    padding: 10px 20px;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Forgot Password Link */
+.login-form-container a {
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.login-form-container a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
