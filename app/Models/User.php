@@ -16,6 +16,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'RoleID', // Sửa thành RoleID
+        'IsAdmin', // Thêm IsAdmin nếu đã có cột này
     ];
 
     protected $hidden = [
@@ -26,4 +28,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Quan hệ với Role
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'RoleID', 'RoleID'); // Sửa thành RoleID
+    }
+
+    // Kiểm tra vai trò
+    public function isAdmin()
+    {
+        return $this->IsAdmin; // Dùng IsAdmin thay vì kiểm tra RoleName
+    }
 }

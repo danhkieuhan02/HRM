@@ -11,5 +11,9 @@ Route::prefix('/account')->name('account.')->group(function () {
     Route::post('/dang-ky', [AccountController::class, 'save'])->name('save');
     Route::get('/dang-nhap', [AccountController::class, 'login'])->name('login');
     Route::post('/dang-nhap', [AccountController::class, 'auth'])->name('auth');
-    Route::get('/dang-xuat', [AccountController::class, 'logout'])->name('logout');
+    Route::post('/dang-xuat', [AccountController::class, 'logout'])->name('logout');
 });
+
+Route::get('/recruitment', function () {
+    return view('recruitment');
+})->name('recruitment');

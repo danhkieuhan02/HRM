@@ -25,14 +25,14 @@ class AccountController extends Controller
         $user = new User($data);
         $user->save();
         return redirect()
-            ->route('admin.product.index')
+            ->route('account.login')
             ->with('_success', 'Successful account registration!');
     }
 
     public function customValidate(Request $request)
     {
         $rules = [
-            "name" => "required|min:4",
+            "name" => "required|min:3",
             "password" => "required|min:4|same:cf_password",
             "cf_password"  => "required",
             "email" => "required|unique:users,email"

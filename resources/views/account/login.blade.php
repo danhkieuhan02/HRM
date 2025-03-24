@@ -35,8 +35,9 @@
 
         <div class="login-form-container">
             <h2 class="text-center mb-4">Đăng Nhập</h2>
-            <form action="{{ route('account.login') }}" method="post">
+            <form action="{{ route('account.auth') }}" method="post">
                 @csrf
+                @include('include.errors')
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Nhập email"
@@ -48,7 +49,7 @@
                         placeholder="Nhập mật khẩu" required>
                 </div>
                 <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="rememberMe" name="remember">
+                    <input type="checkbox" class="form-check-input" id="rememberMe">
                     <label class="form-check-label" for="rememberMe">Ghi nhớ đăng nhập</label>
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Đăng Nhập</button>

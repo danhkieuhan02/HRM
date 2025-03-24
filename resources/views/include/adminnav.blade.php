@@ -24,7 +24,8 @@
                 <li class="nav-item"><a class="nav-link" href="/" data-lang="Trang Chủ">Trang
                         Chủ</a>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#" data-lang="Tuyển Dụng">Tuyển Dụng</a>
+                <li class="nav-item"><a class="nav-link" href="{{ url('/resources/views/news/recruitment.blade.php') }}"
+                        data-lang="Tuyển Dụng">Tuyển Dụng</a>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="#" data-lang="Tin Tức">Tin Tức</a></li>
                 @guest
@@ -32,10 +33,10 @@
                             Nhập</a></li>
                 @endguest
                 @auth
-                    <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}" data-lang="Đăng Xuất"
+                    <li class="nav-item"><a class="nav-link" href="{{ route('account.logout') }}" data-lang="Đăng Xuất"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Đăng
                             Xuất</a></li>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    <form id="logout-form" action="{{ route('account.logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
                 @endauth

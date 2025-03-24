@@ -35,11 +35,17 @@
 
         <div class="login-form-container">
             <h2 class="text-center mb-4">Đăng ký tài khoản</h2>
-            <form action="{{ route('account.login') }}" method="post">
+            <form action="{{ route('account.save') }}" method="post">
                 @csrf
+                @include('include.errors')
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Nhập email"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Tên</label>
+                    <input type="name" class="form-control" id="name" name="name" placeholder="Nhập tên"
                         required>
                 </div>
                 <div class="mb-3">
@@ -48,8 +54,8 @@
                         placeholder="Nhập mật khẩu" required>
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Nhập lại mật khẩu</label>
-                    <input type="password" class="form-control" id="password" name="password"
+                    <label for="cf_password" class="form-label">Nhập lại mật khẩu</label>
+                    <input type="password" class="form-control" id="cf_password" name="cf_password"
                         placeholder="Nhập lại mật khẩu" required>
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Đăng Ký</button>
