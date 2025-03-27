@@ -12,8 +12,7 @@ class RoleUserSeeder extends Seeder
 {
     public function run()
     {
-
-        // Tạo vai trò
+        // tạo lại dữ liệu mẫu
         $adminRole = Role::create([
             'RoleName' => 'admin',
             'Description' => 'Quản trị viên hệ thống',

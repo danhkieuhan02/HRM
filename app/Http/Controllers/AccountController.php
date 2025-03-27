@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AccountController extends Controller
 {
+
     //Đăng ký tài khoản
     public function register()
     {
@@ -22,11 +23,11 @@ class AccountController extends Controller
         unset($data['_token']);
         unset($data['cf_password']);
         $data["password"] = Hash::make($data['password']);
-        $user = new User($data);
-        $user->save();
+        $data["RoleId"] = 'client';
+        $user = User::create($data);
         return redirect()
             ->route('account.login')
-            ->with('_success', 'Successful account registration!');
+            ->with('_success', 'Đăng ký tài khoản thành công!');
     }
 
     public function customValidate(Request $request)
@@ -53,7 +54,7 @@ class AccountController extends Controller
         if (Auth::attempt($data)) {
             return redirect()->to('/')->with('_success', "Signed in system successfully!");
         } else {
-            return redirect()->route('account.login')->with('_errors', "Invalid username or password.");
+            return redirect()->route('account.login')->with('_errors', "Tên đăng nhập hoặc mật khẩu không đúng!");
         }
     }
 
@@ -61,40 +62,6 @@ class AccountController extends Controller
     {
         Auth::logout();
         return redirect()->to('/')
-            ->with('_success', "Log out from the system successfully!");
-    }
-
-    //Thay đổi mật khẩu của users.
-    public function updatePassword(Request $request)
-    {
-        return view('account.update_pwd');
-    }
-
-    public function changePassword(Request $request)
-    {
-        $data = $request->all();
-        unset($data['_token']);
-
-
-        $rules = [
-            "old_password" => "required",
-            "new_password" => "required|min:4|same:cf_password",
-            "cf_password"  => "required",
-        ];
-        $request->validate($rules);
-
-        $id = Auth::user()->id;
-        $user = User::findOrFail($id);
-
-        if (Hash::check($data['old_password'], $user->password)) {
-            $user->password = Hash::make($data['new_password']);
-            $user->save();
-            $msg = 'Your password updated successfully!';
-            return redirect()->to('/')
-                ->with('_success', $msg);
-        } else {
-            $msg = 'Your old password is incorrect!';
-            return redirect()->route('account.updatePassword')->with('_errors', $msg);
-        }
+            ->with('_success', "Đăng xuất khỏi hệ thống thành công!");
     }
 }

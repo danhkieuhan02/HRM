@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +19,18 @@ Route::prefix('/account')->name('account.')->group(function () {
 Route::get('/recruitment', function () {
     return view('recruitment');
 })->name('recruitment');
+
+
+// admin/
+Route::prefix('/admin')->name('admin.')->group(function () {
+    //account
+    Route::get('/danh-sach-tai-khoan', [UserController::class, 'index'])->name('users.index');
+    Route::get('/test', [App\Http\Controllers\Admin\TestController::class, 'index'])->name('test');
+
+    //role
+    // Route cho Role
+    Route::get('/danh-sach-vai-tro', [RoleController::class, 'index'])->name('roles.index');
+    Route::post('/danh-sach-vai-tro', [RoleController::class, 'store'])->name('roles.store');
+    Route::put('/vai-tro/{role}', [RoleController::class, 'update'])->name('roles.update');
+    Route::delete('/vai-tro/{role}', [RoleController::class, 'destroy'])->name('roles.destroy');
+});
