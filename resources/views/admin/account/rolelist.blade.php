@@ -78,25 +78,6 @@
 
 @section('scripts')
     <script>
-        document.querySelectorAll('.edit-role').forEach(button => {
-            button.addEventListener('click', function() {
-                const id = this.getAttribute('data-id');
-                const name = this.getAttribute('data-name');
-                const description = this.getAttribute('data-description');
-
-                document.getElementById('role_id').value = id;
-                document.getElementById('name').value = name;
-                document.getElementById('description').value = description;
-                document.getElementById('addRoleModalLabel').textContent = 'Cập nhật vai trò';
-
-                // Thay đổi action của form sang route update
-                const form = document.getElementById('roleForm');
-                form.action = '{{ url('/admin/vai-tro') }}/' + id;
-                form.method = 'POST';
-                form.innerHTML += '<input type="hidden" name="_method" value="PUT">';
-            });
-        });
-
         // Reset form khi mở modal để thêm mới
         document.getElementById('addRoleModal').addEventListener('show.bs.modal', function(event) {
             if (!event.relatedTarget.classList.contains('edit-role')) {

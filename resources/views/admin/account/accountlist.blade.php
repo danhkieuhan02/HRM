@@ -29,10 +29,13 @@
                             <td>{{ $user->IsAdmin }}</td>
                             <td>
                                 <div class="text-center">
-                                    <a href="#" class="btn btn-outline-primary btn-sm">
+                                    <a href="{{ route('admin.users.edit', ['id' => $user->id]) }}"
+                                        class="btn btn-outline-primary btn-sm">
                                         <i class="bi bi-pencil"></i> Cập nhật
                                     </a>
-                                    <a href="#" class="btn btn-outline-danger btn-sm">
+                                    <a href="{{ route('admin.users.destroy', ['id' => $user->id]) }}"
+                                        class="btn btn-outline-danger btn-sm"
+                                        onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này?')">
                                         <i class="bi bi-trash"></i> Xóa
                                     </a>
                                 </div>
@@ -81,24 +84,4 @@
             </div>
         </div>
     </div>
-    <script>
-        document.querySelectorAll('.btn-outline-primary').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const row = this.closest('tr');
-                const id = row.querySelector('td:nth-child(1)').textContent;
-                const name = row.querySelector('td:nth-child(2)').textContent;
-                const email = row.querySelector('td:nth-child(3)').textContent;
-                const isAdmin = row.querySelector('td:nth-child(4)').textContent;
-
-                document.getElementById('user_id').value = id;
-                document.getElementById('name').value = name;
-                document.getElementById('email').value = email;
-                document.getElementById('is_admin').value = isAdmin;
-                document.getElementById('password').value = ''; // Để trống mật khẩu khi cập nhật
-
-                new bootstrap.Modal(document.getElementById('addUserModal')).show();
-            });
-        });
-    </script>
 @endsection

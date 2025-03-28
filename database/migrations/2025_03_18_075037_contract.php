@@ -9,12 +9,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('contracts', function (Blueprint $table) {
-            $table->string('ContractCode', 20)->primary(); // Cột ContractCode (varchar(20), khóa chính)
-            $table->string('ContractType', 50);           // Cột ContractType (nvarchar(50))
-            $table->date('StartDate');                    // Cột StartDate (date)
-            $table->date('EndDate')->nullable();          // Cột EndDate (date, có thể NULL)
-            $table->text('Note')->nullable();             // Cột Note (nvarchar(max) -> text)
-            $table->timestamps();                         // Thêm created_at và updated_at (tùy chọn)
+            $table->string('contract_code', 20)->primary();
+            $table->string('ContractType', 50);
+            $table->date('StartDate');
+            $table->date('EndDate')->nullable();
+            $table->text('Note')->nullable();
+            $table->timestamps();
         });
     }
 

@@ -10,6 +10,7 @@
         <nav class="mt-2">
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">EXAMPLES</li>
+                {{-- user --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-speedometer"></i>
@@ -39,17 +40,59 @@
                         </li>
                     </ul>
                 </li>
+                {{-- Employee --}}
                 <li class="nav-item">
-                    <a href="../generate/theme.html" class="nav-link">
-                        <i class="nav-icon bi bi-palette"></i>
-                        <p>Theme Generate</p>
+                    <a href="{{ route('admin.employees.index') }}" class="nav-link">
+                        <i class="nav-icon bi bi-speedometer"></i>
+                        <p>
+                            Nhân sự
+                            <i class="nav-arrow bi bi-chevron-right"></i>
+                        </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.employees.create') }}" class="nav-link">
+                                <i class="nav-icon bi bi-circle"></i>
+                                <p>Thông tin nhân viên</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon bi bi-circle"></i>
+                                <p> Đơn vị đào tạo</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon bi bi-circle"></i>
+                                <p>Phòng ban</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon bi bi-circle"></i>
+                                <p>Hợp đồng</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon bi bi-circle"></i>
+                                <p>Lương thưởng</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon bi bi-circle"></i>
+                                <p>Nghỉ phép</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-box-seam-fill"></i>
                         <p>
-                            Widgets
+                            Tuyển dụng
                             <i class="nav-arrow bi bi-chevron-right"></i>
                         </p>
                     </a>
@@ -57,19 +100,19 @@
                         <li class="nav-item">
                             <a href="../widgets/small-box.html" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
-                                <p>Small Box</p>
+                                <p>Ứng viên</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="../widgets/info-box.html" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
-                                <p>info Box</p>
+                                <p>CV</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="../widgets/cards.html" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
-                                <p>Cards</p>
+                                <p>Liên hệ</p>
                             </a>
                         </li>
                     </ul>

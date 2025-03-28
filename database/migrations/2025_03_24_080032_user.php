@@ -18,6 +18,7 @@ return new class extends Migration
             $table->boolean('IsAdmin')->default(false); // Thêm cột IsAdmin
             $table->timestamps();
             $table->string('remember_token', 100)->nullable();
+            $table->unsignedBigInteger('RoleID')->default(1)->change();
         });
     }
 

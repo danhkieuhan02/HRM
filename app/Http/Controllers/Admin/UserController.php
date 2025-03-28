@@ -37,6 +37,38 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', 'Tài khoản đã được thêm thành công!');
     }
+    //chỉnh sửa tài khoản
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        return view('admin.account.edit', compact('user'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = $request->all();
+        unset($data['_token']);
+
+        $rules = [
+            "name" => "required",
+            "email" => "required|email",
+            "IsAdmin" => "required|boolean",
+        ];
+        $request->validate($rules);
+
+        $user = User::findOrFail($id);
+        $user->update($data);
+
+        return redirect()->route('admin.users.index')->with('success', 'Cập nhật tài khoản thành công!');
+    }
+
+    //xoá tài khoản
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('admin.users.index')->with('success', 'Tài khoản đã được xóa thành công!');
+    }
 
     //Thay đổi mật khẩu
     public function updatePassword(Request $request)
