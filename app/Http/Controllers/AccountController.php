@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -52,7 +53,13 @@ class AccountController extends Controller
         $data = $request->all();
         unset($data['_token']);
         if (Auth::attempt($data)) {
-            return redirect()->to('/')->with('_success', "Signed in system successfully!");
+            // admin thì chuyển đến trang admin
+            if (Auth::user()->role->RoleID == Role::ROLE_ADMIN) {
+                return redirect()->route('admin.dashboard')->with('_success', "Signed in system successfully!");
+            } else {
+                // client thì chuyển đến trang client
+                return redirect()->to('/')->with('_success', "Signed in system successfully!");
+            }
         } else {
             return redirect()->route('account.login')->with('_errors', "Tên đăng nhập hoặc mật khẩu không đúng!");
         }
@@ -63,5 +70,16 @@ class AccountController extends Controller
         Auth::logout();
         return redirect()->to('/')
             ->with('_success', "Đăng xuất khỏi hệ thống thành công!");
+    }
+
+    // Đổi mật khẩu
+    public function showChangePasswordForm()
+    {
+        // TODO: Tạo view đổi mật khẩu
+        return view('account.change_password');
+    }
+    public function changePassword(Request $request)
+    {
+        // TODO: Viết code ở đây
     }
 }

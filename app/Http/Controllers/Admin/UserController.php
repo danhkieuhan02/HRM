@@ -29,6 +29,7 @@ class UserController extends Controller
 
         // Tạo người dùng mới
         User::create([
+            'RoleId' => $request->role_id,
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),

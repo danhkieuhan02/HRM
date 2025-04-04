@@ -10,6 +10,9 @@ class Role extends Authenticatable
     protected $table = 'Role';        // Tên bảng
     protected $primaryKey = 'RoleID'; // Khóa chính
 
+    public const ROLE_ADMIN = '1';
+    public const ROLE_CLIENT = '2';
+
     protected $fillable = [
         'RoleName',
         'Description',
@@ -18,6 +21,6 @@ class Role extends Authenticatable
     // Quan hệ với User
     public function users()
     {
-        return $this->hasMany(User::class, 'role_id', 'RoleID');
+        return $this->hasMany(User::class, 'RoleID', 'RoleID');
     }
 }

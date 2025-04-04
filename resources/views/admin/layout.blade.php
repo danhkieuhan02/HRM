@@ -42,6 +42,7 @@
             </div>
             <div class="app-content">
                 <div class="container-fluid">
+                    @include('include/errors')
                     @section('content')
                     @show
                 </div>

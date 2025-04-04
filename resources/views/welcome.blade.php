@@ -17,7 +17,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="#" data-lang="HRM Giáo Dục">HRM Giáo Dục</a>
+            <a class="navbar-brand" href="#" data-lang="HRM Giáo Dục">HRM System</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -31,14 +31,29 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#" data-lang="Tin Tức">Tin Tức</a></li>
                     @guest
-                        <li class="nav-item"><a class="nav-link" href="{{ route('account.login') }}"
-                                data-lang="Đăng Nhập">Đăng
-                                Nhập</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="authDropdown" data-bs-toggle="dropdown"
+                                data-lang="Tài Khoản">Tài Khoản</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('account.login') }}" data-lang="Đăng Nhập">Đăng
+                                        Nhập</a></li>
+                                <li><a class="dropdown-item" href="{{ route('account.register') }}" data-lang="Đăng Ký">Đăng
+                                        Ký</a></li>
+                            </ul>
+                        </li>
                     @endguest
                     @auth
-                        <li class="nav-item"><a class="nav-link" href="{{ route('account.logout') }}" data-lang="Đăng Xuất"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Đăng
-                                Xuất</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" data-bs-toggle="dropdown"
+                                data-lang="Tài Khoản">Tài Khoản</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('account.changePassword') }}"
+                                        data-lang="Đổi Mật Khẩu">Đổi Mật Khẩu</a></li>
+                                <li><a class="dropdown-item" href="{{ route('account.logout') }}" data-lang="Đăng Xuất"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Đăng
+                                        Xuất</a></li>
+                            </ul>
+                        </li>
                         <form id="logout-form" action="{{ route('account.logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
@@ -206,17 +221,6 @@
                                 data-lang="Tự động tính lương dựa trên hợp đồng, phụ cấp, thưởng, khấu trừ thuế và bảo hiểm.">
                                 Tự động tính lương dựa trên hợp đồng, phụ cấp, thưởng, khấu trừ thuế và bảo
                                 hiểm.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title" data-lang="Dịch Vụ ESS">Dịch Vụ ESS</h5>
-                            <p class="card-text"
-                                data-lang="Nhân viên xem/sửa thông tin cá nhân, xem phiếu lương, đăng ký nghỉ phép, gửi yêu cầu.">
-                                Nhân viên xem/sửa thông tin cá nhân, xem phiếu lương, đăng ký nghỉ phép, gửi yêu cầu.
                             </p>
                         </div>
                     </div>

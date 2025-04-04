@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // dùng bootstrap5 để hiển thị phân trang
+        \Illuminate\Pagination\Paginator::useBootstrapFive();
     }
 }

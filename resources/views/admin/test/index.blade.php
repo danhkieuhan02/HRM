@@ -5,8 +5,8 @@
 @section('content')
     <div class="row">
         <div class="col-12">
-            <h1>Đây là trang dùng để test</h1>
-            <p>Hello</p>
+            <h1>Hi Admin</h1>
+            <p>!!!</p>
         </div>
     </div>
 @endsection
